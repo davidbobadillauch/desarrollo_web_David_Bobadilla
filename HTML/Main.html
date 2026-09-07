@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../CSS/Main.css">
+    <title>Avistamientos</title>
+</head>
+<body class="body">
+    <h1 class="titulo">Unión de ornitólogos de Chile</h1>
+      <p>Registro de avistamientos</p>
+      <form class="margen" id="form-registro2">
+        <div>
+            <label for="tipo">(*)Tipo del ave:</label><br>
+            <select id="tipo">
+              <option value="">-- Seleccione --</option>
+              <option value="Rapaz">Rapaz</option>
+              <option value="Pájaro">Pájaro</option>
+              <option value="Zancuda">Zancuda</option>
+              <option value="Corredor">Corredor</option>
+              <option value="Anseriforme">Anseriforme</option>
+              <option value="Esfenisciforme">Esfenisciforme</option>
+              <option value="Gallina">Gallina</option>
+            </select>
+            <span class="error" id="error-tipo">Debe ingresar un tipo de ave.</span>
+        </div>
+            <br>
+        <div>
+            <label for="nombre">Nombre del ave avistada:</label> <br>
+            <input type="text" id="nombre">
+            <span class="error" id="error-nombre">Debe ingresar un nombre solo con texto.</span>
+        </div>
+            <br>
+        <div>
+            <label for="lugar">(*)Lugar donde se avistó:</label><br>
+            <input type="text" id="lugar">
+            <span class="error" id="error-lugar">Debe ingresar un lugar solo con texto.</span>
+        </div>
+            <br>
+        <div>
+            <label for="fecha">(*)Fecha de avistamiento:</label><br>
+            <input type="date" id="fecha">
+            <span class="error" id="error-fecha">Debe ingresar una fecha válida.</span>
+        </div>
+            <br>
+        <div>
+            <label for="archivos">(*)Foto o Video</label><br>
+            <input type="file" name="archivos" id="archivos" multiple accept="image/*,video/*"><br>
+            <span class="error" id="error-archivos">Debe ingresar al menos un archivo.</span>
+        </div>
+            <br>
+       <button type="submit" id="envio">Enviar</button>
+      </form>
+    <hr>
+
+  <h2>Avistamientos registrados</h2>
+  <p class="contador">Total: <span id="total-avistamientos">0</span> avistamientos</p>
+  <div id="lista-avistamientos"></div>
+    <div class="controles-busqueda">
+        <div>
+            <label for="filtro-tipo">Filtrar por tipo de ave:</label>
+            <select id="filtro-tipo">
+                <option value="todos">Todos los tipos</option>
+                <option value="Rapaz">Rapaz</option>
+                <option value="Pájaro">Pájaro</option>
+                <option value="Zancuda">Zancuda</option>
+                <option value="Corredor">Corredor</option>
+                <option value="Anseriforme">Anseriforme</option>
+                <option value="Esfenisciforme">Esfenisciforme</option>
+                <option value="Gallina">Gallina</option>
+              </select>
+        </div>
+        <div>
+            <label for="ordenar-por">Ordenar por:</label>
+            <select id="ordenar-por">
+                <option value="fecha-desc">Fecha (Más recientes primero)</option>
+                <option value="fecha-asc">Fecha (Más antiguos primero)</option>
+                <option value="lugar-asc">Lugar (A - Z)</option>
+                <option value="lugar-desc">Lugar (Z - A)</option>
+            </select>
+        </div>
+    </div>
+    <div class="paginacion-container">
+        <button id="btn-prev" disabled>Anterior</button>
+        <span id="info-pagina">Página 1 de 1</span>
+        <button id="btn-next" disabled>Siguiente</button>
+    </div>
+   <script src="../JS/main.js"></script>
+</body>
+</html>

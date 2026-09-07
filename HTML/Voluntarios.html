@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../CSS/Voluntarios.css">
+        <title>Registro de Voluntarios</title>
+    </head>
+    <body class="body">
+        <h1 class="titulo">Unión de ornitólogos de Chile</h1>
+        <p class="titulo">Registro de voluntarios</p>
+        <form class="margen" id="form-registro">
+          <div>
+            <label class="form-label" for="nombre">(*)Nombre:</label><br>
+            <input type="text" id="nombre">
+            <span class="error" id="error-nombre">Debe ingresar un nombre (mínimo 3 caracteres).</span>
+          </div>
+        <br>
+          <div>
+            <label class="form-label" for="numero">Número de Teléfono (8 dígitos):</label> 
+              <br>
+            <span>+56 </span>
+            <input type="text" id="numero">
+            <span class="error" id="error-numero">Debe ingresar solamente números.</span>
+          </div>
+        <br>
+          <div>
+            <label class="form-label" for="correo">(*)Correo Electrónico:</label> 
+              <br>
+            <input type="text" id="correo">
+            <span class="error" id="error-correo">Debe ingresar un correo válido.</span>
+          </div>
+        <br>
+          <div>
+            <label class="form-label" for="region">(*)Región:</label>
+            <br>
+            <select id="region">
+            <option value="">-- Seleccione --</option>
+            <option value="Arica y Parinacota">Arica y Parinacota</option>
+            <option value="Tarapacá">Tarapacá</option>
+            <option value="Antofagasta">Antofagasta</option>
+            <option value="Atacama">Atacama</option>
+            <option value="Coquimbo">Coquimbo</option>
+            <option value="Valparaíso">Valparaíso</option>
+            <option value="Metropolitana">Metropolitana</option>
+            <option value="O'Higgins">O'Higgins</option>
+            <option value="Maule">Maule</option>
+            <option value="Ñuble">Ñuble</option>
+            <option value="Bío-Bío">Bío-Bío</option>
+            <option value="Araucanía">Araucanía</option>
+            <option value="Los Ríos">Los Ríos</option>
+            <option value="Los Lagos">Los Lagos</option>
+            <option value="Aysén">Aysén</option>
+            <option value="Magallanes">Magallanes</option>
+            </select>
+            <span class="error" id="error-región">Debe seleccionar una región.</span>
+          </div>
+        <br>
+          <div>
+           <label class="form-label" for="comuna">(*)Comuna:</label><br>
+           <input type="text" id="comuna">
+           <span class="error" id="error-comuna">Debe ingresar una comuna válida (mínimo 3 caracteres y sin números).</span>
+          </div>
+        <br>
+          <div>
+            <label class="form-label" for="direccion">Dirección:</label><br>
+            <input type="text" id="direccion">
+            <span class="error" id="error-dirección">Debe ingresar una dirección válida (mínimo 3 caracteres y con números).</span>
+          </div>
+        <button type="submit" id="envio">Registrarse</button>
+        </form>
+      <script src="../JS/voluntarios.js"></script>
+    </body>
+</html>
