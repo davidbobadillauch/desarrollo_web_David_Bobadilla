@@ -1,8 +1,0 @@
-# desarrollo_web_David_Bobadilla
-- Borré todas los inputs relacionados al formulario anterior que no sirvieran (dirección, lugar, fecha de avistamiento).
-- En db.py incluí parte de lo hecho en los filtros de listado de avistamientos, dado que tengo que interactuar con la base de datos. 
-- En los templates solamente use reiteradas veces el botón de volver a la portada con el archivo base.html, los demás son de parte de las páginas normales salvo comunas_options, que fue necesario para el correcto cambio de comunas dependiendo de la región elegida.
-- En los validations.py seguí las mismas ideas relacionadas con el filtro de inputs, salvo date que lo verifique con funciones propias de la libreria date.
-- Los javascripts los modifique mucho, borrando gran parte de las cosas que ya no son necesarias como partes de listado o refrescar la página, por lo que ahora residen ahí las validaciones básicas y los traspasos de datos a las validaciones de bases de datos, aparte de activar las clases de error.
-- Por último, app.py fue hecho de tal manera que pueda navegar entre los html, mover datos a que se verifiquen, y si pasan las pruebas ir directo a la base de datos a guardarse y redirigirse a la próxima página. También es el encargada de pasar las listas (De aves por ejemplo) al html y que así se muestren en pantalla.
-- Tengo que mencionar que para el validador de HTML los verifiqué con el resultado que sale después de aplicar todo el Jinja por lo qué no estoy seguro de que si esté correcta mi verificación, en dicho caso, las páginas en sí no poseen errores a simple vista ni pasandolas por el validador de esa manera.
