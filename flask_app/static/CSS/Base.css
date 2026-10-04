@@ -1,0 +1,19 @@
+.header-base {
+    padding: 10px 20px;
+}
+
+.btn-volver {
+    display: inline-block;
+    padding: 6px 14px;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.btn-volver:hover {
+    background-color: #e0e0e0;
+}

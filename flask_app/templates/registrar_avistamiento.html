@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/avistamientos.css') }}">
+
+<p class="titulo">Informar Avistamiento</p>
+
+<form class="margen" id="form-registro2" action="{{ url_for('registrar_avistamiento') }}" method="POST" enctype="multipart/form-data">
+  <div>
+      <label for="voluntario">(*) Voluntario:</label><br>
+      <select id="voluntario" name="voluntario_id">
+        <option value="">-- Seleccione Voluntario --</option>
+        {% for vol in voluntarios %}
+          <option value="{{ vol.id }}">{{ vol.nombre }} ({{ vol.email }})</option>
+        {% endfor %}
+      </select>
+      <span class="error" id="error-voluntario">Debe seleccionar un voluntario.</span>
+  </div>
+  <br>
+  <div>
+      <label for="ave_id">(*) Ave avistada:</label><br>
+      <select id="ave_id" name="ave_id">
+        <option value="">-- Seleccione Ave --</option>
+        {% for ave in aves %}
+          <option value="{{ ave.id }}">{{ ave.nombre }}</option>
+        {% endfor %}
+      </select>
+      <span class="error" id="error-ave">Debe seleccionar un ave.</span>
+  </div>
+  <br>
+  <div>
+      <label for="fecha_hora">(*) Fecha y Hora de avistamiento:</label><br>
+      <input type="datetime-local" id="fecha_hora" name="fecha_hora">
+      <span class="error" id="error-fecha">Debe ingresar una fecha y hora válida.</span>
+  </div>
+  <br>
+  <div>
+      <label for="lugar">(*) Lugar donde se avistó:</label><br>
+      <input type="text" id="lugar" name="lugar">
+      <span class="error" id="error-lugar">Debe ingresar un lugar válido (mínimo 3 caracteres).</span>
+  </div>
+  <br>
+  <div>
+      <label for="descripcion">(*) Descripción:</label><br>
+      <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea>
+      <span class="error" id="error-descripcion">Debe ingresar una descripción válida.</span>
+  </div>
+  <br>
+  <div>
+      <label for="archivo">(*) Foto o Video:</label><br>
+      <input type="file" name="archivo" id="archivo" accept="image/*,video/*"><br>
+      <span class="error" id="error-archivo">Debe adjuntar un archivo.</span>
+  </div>
+  <br>
+  <button type="submit" id="envio">Enviar</button>
+</form>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/avistamientos.js') }}"></script>
+{% endblock %}

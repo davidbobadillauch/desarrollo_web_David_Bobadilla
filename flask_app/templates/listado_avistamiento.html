@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/listado.css') }}">
+    {% block extra_css %}{% endblock %}
+    
+    {% extends 'base.html' %}
+
+{% block title %}Listado de Avistamientos{% endblock %}
+
+{% block content %}
+
+<h1>Listado de Avistamientos Registrados</h1>
+
+<div class="controles-busqueda">
+    <div>
+        <label for="filtro-tipo">Filtrar por tipo de ave:</label>
+        <select id="filtro-tipo" name="filtro_tipo">
+            <option value="todos">Todos los tipos</option>
+            {%- for ave in tipos_aves -%}
+            <option value="{{ ave.id }}">{{ ave.nombre }}</option>
+            {%- endfor -%}
+        </select>
+    </div>
+    <div>
+        <label for="ordenar-por">Ordenar por:</label>
+        <select id="ordenar-por" name="ordenar_por">
+            <option value="fecha-desc">Fecha (Más recientes primero)</option>
+            <option value="fecha-asc">Fecha (Más antiguos primero)</option>
+            <option value="lugar-asc">Lugar (A - Z)</option>
+            <option value="lugar-desc">Lugar (Z - A)</option>
+        </select>
+    </div>
+</div>
+
+<div id="lista-avistamientos">
+    {% for a in avistamientos %}
+      <div class="avistamiento-item margen">
+        <span class="nombre"><strong>Ave:</strong> {{ a.ave.nombre if a.ave else a.ave_nombre }}</span> | 
+        <span class="lugar"><strong>Lugar:</strong> {{ a.lugar }}</span> | 
+        <span class="fecha"><strong>Fecha:</strong> {{ a.fecha_hora.strftime('%d/%m/%Y %H:%M') if a.fecha_hora else '' }}</span> |
+        <span class="voluntario"><strong>Voluntario:</strong> {{ a.voluntario.nombre if a.voluntario else '' }}</span>
+        
+        {% if a.descripcion %}
+            <p class="descripcion"><strong>Descripción:</strong> {{ a.descripcion }}</p>
+        {% endif %}
+
+        <div class="archivos-contenedor">
+            {% for reg in a.registros %}
+                {% set ruta_limpia = reg.ruta_archivo.replace('\\', '/') %}
+                {% if ruta_limpia.endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp')) %}
+                   <img class="archivos" src="{{ url_for('static', filename=ruta_limpia) }}" alt="Foto del avistamiento">
+                {% elif ruta_limpia.endswith(('.mp4', '.webm', '.ogg')) %}
+                   <video class="archivos" src="{{ url_for('static', filename=ruta_limpia) }}" controls></video>
+                {% else %}
+                   <a href="{{ url_for('static', filename=ruta_limpia) }}" target="_blank">Ver archivo adjunto</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+      </div>
+    {% else %}
+      <p>No se encontraron avistamientos registrados.</p>
+    {% endfor %}
+</div>
+
+<div class="paginacion-container">
+    {% if pagina > 1 %}
+        <a href="{{ url_for('listado_avistamientos', page=pagina-1) }}" class="btn-paginacion">Anterior</a>
+    {% endif %}
+    
+    <span>Página {{ pagina }} de {{ total_paginas if total_paginas > 0 else 1 }}</span>
+    
+    {% if pagina < total_paginas %}
+        <a href="{{ url_for('listado_avistamientos', page=pagina+1) }}" class="btn-paginacion">Siguiente</a>
+    {% endif %}
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/listado.js') }}"></script>
+{% endblock %}
+</html>
