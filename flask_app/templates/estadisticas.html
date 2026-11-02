@@ -1,0 +1,33 @@
+{% extends "base.html" %} 
+    
+{% block title %}Estadísticas del Sistema{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/estadisticas.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Estadísticas del Sistema</h1>
+
+    <section class="grafico-container">
+        <h2>Avistamientos por Día</h2>
+        <div id="chartAvistamientosPorDia" style="width: 100%; height: 400px;"></div>
+    </section>
+
+    <section class="grafico-container">
+        <h2>Total de Avistamientos por Tipo de Ave</h2>
+        <div id="chartAvistamientosPorAve" style="width: 100%; height: 400px;"></div>
+    </section>
+
+    <section class="grafico-container">
+        <h2>Voluntarios Registrados por Comuna</h2>
+        <div id="chartVoluntariosPorComuna" style="width: 100%; height: 400px;"></div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="{{ url_for('static', filename='js/estadisticas.js') }}"></script>
+{% endblock %}
