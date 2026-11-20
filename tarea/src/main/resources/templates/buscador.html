@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscador de Avistamientos - Unión de Ornitólogos de Chile</title>
+  <link rel="stylesheet" href="/css/buscador.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="http://localhost:5000/" class="btn-volver">&larr; Volver a la Portada</a>
+      <h1 class="titulo">Unión de Ornitólogos de Chile</h1>
+      <p class="subtitulo">Buscador y Evaluación de Avistamientos</p>
+    </header>
+
+    <main>
+      <section class="search-card" aria-label="Búsqueda de avistamientos">
+        <form id="form-buscador" class="search-form" action="#" method="get" onsubmit="return false;">
+          <label for="search-input" class="search-label">Buscar avistamiento:</label>
+          <div class="search-input-wrapper">
+            <input
+              type="text"
+              id="search-input"
+              name="q"
+              class="search-input"
+              placeholder="Escribe el nombre de un ave, voluntario o comuna..."
+              autocomplete="off"
+            >
+          </div>
+      </section>
+
+      <section class="results-card" aria-label="Resultados de la búsqueda">
+        <div class="results-header">
+          <h2>Resultados</h2>
+          <span id="results-count" class="results-count"></span>
+        </div>
+
+        <div id="status-container" class="status-message">
+          Comience a escribir en el buscador para ver los avistamientos.
+        </div>
+
+        <div id="table-wrapper" class="table-responsive" style="display: none;">
+          <table class="results-table">
+            <thead>
+              <tr>
+                <th scope="col">Voluntario</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Ave</th>
+                <th scope="col">Comuna</th>
+                <th scope="col">Nota Promedio</th>
+                <th scope="col">Acción</th>
+              </tr>
+            </thead>
+            <tbody id="results-tbody">
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal-evaluar" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <h3 id="modal-title">Evaluar Avistamiento</h3>
+      <p id="modal-description">Seleccione una nota del 1 al 7 para este avistamiento:</p>
+
+      <div class="rating-buttons-group" role="group" aria-label="Selección de nota de 1 a 7">
+        <button type="button" class="rating-btn" data-value="1">1</button>
+        <button type="button" class="rating-btn" data-value="2">2</button>
+        <button type="button" class="rating-btn" data-value="3">3</button>
+        <button type="button" class="rating-btn" data-value="4">4</button>
+        <button type="button" class="rating-btn" data-value="5">5</button>
+        <button type="button" class="rating-btn" data-value="6">6</button>
+        <button type="button" class="rating-btn" data-value="7">7</button>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" id="btn-cancelar-modal" class="btn-secondary">Cancelar</button>
+        <button type="button" id="btn-confirmar-modal" class="btn-primary" disabled>Guardar Nota</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/buscador.js"></script>
+</body>
+</html>

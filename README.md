@@ -1,1 +1,7 @@
 # desarrollo_web_David_Bobadilla
+- Decidí redireccionar desde nuestra aplicación previa a la nueva pestaña de evaluación de avistamientos por medio del inicio.
+- Esta página se rige por medio de java, donde este lenguaje se dedica a poder generar las consultas de la base de datos, captura de excepciones y errores, como tambien el get y post del mapping en nuestros controladores.
+- De parte del html se investigó sobre los métodos de puntuación en otras páginas de ejemplos para llegar a tener algo consistente con las notas.
+- Se prefirió generar un recuadro emergente para colocar la nota con el objetivo de no alargar demasiado el texto dentro de los resultados, ya que si pusiera la puntuación más todos los datos del avistamiento se acopla demasiada información.
+- Para CSS se mantiene bastantes colores de otras secciones relacionadas con información pura, enfocandose en remarcar la información importante como el tipo de ave y el subrayado con amarillo para las palabras que intenta buscar el input.
+- Para Javascript mantenemos el DomContentLoaded para el refresco de página y manipulación de elementos. Por otro lado, se prefirió volver a usar InnerHTML no sin antes tener una función que limpie la posibilidad de un ataque XSS. Por último, se mantiene el uso de fetch para recibir datos sin alterar la página y la detección de interacciones para modificar los botones y sus labores.
